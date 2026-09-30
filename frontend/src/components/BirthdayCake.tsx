@@ -94,12 +94,26 @@ export function BirthdayCake({ onCelebrate }: BirthdayCakeProps) {
           })}
         </svg>
 
+        {/* 💡 Bouncing "Click Me" callout badge */}
+        <AnimatePresence>
+          {!wished && (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="mt-4 flex items-center justify-center gap-1.5 text-xs font-semibold tracking-wide text-gold-300"
+            >
+              <span className="inline-block animate-bounce">✨ Click here to blow candles! 👇</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.button
           whileHover={{ y: -3 }}
           whileTap={{ y: 0 }}
           onClick={handleWish}
           disabled={wished}
-          className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 px-8 py-4 text-[15px] font-semibold text-navy-950 shadow-[0_10px_30px_-8px_rgba(217,169,78,0.55)] transition-shadow hover:shadow-[0_16px_36px_-8px_rgba(217,169,78,0.7)] disabled:cursor-default disabled:opacity-80"
+          className="mt-2 inline-flex items-center gap-2.5 rounded-full bg-gradient-to-br from-gold-400 to-gold-500 px-8 py-4 text-[15px] font-semibold text-navy-950 shadow-[0_10px_30px_-8px_rgba(217,169,78,0.55)] transition-shadow hover:shadow-[0_16px_36px_-8px_rgba(217,169,78,0.7)] disabled:cursor-default disabled:opacity-80"
         >
           Make a Wish
           <PartyPopper size={18} />

@@ -43,6 +43,20 @@ export function Surprise({ secretMessage, onCelebrate }: SurpriseProps) {
           There's a little something waiting for you.
         </p>
 
+        {/* 💡 Bouncing "Click Me" callout badge */}
+        <AnimatePresence>
+          {!opened && (
+            <motion.div
+              initial={{ opacity: 0, y: -5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -5 }}
+              className="mb-3 flex items-center justify-center gap-1.5 text-xs font-semibold tracking-wide text-gold-300"
+            >
+              <span className="inline-block animate-bounce">✨ Click below to open your surprise! 👇</span>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         <motion.button
           whileHover={{ y: -3 }}
           whileTap={{ y: 0 }}
